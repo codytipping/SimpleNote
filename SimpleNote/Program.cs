@@ -3,7 +3,7 @@ using SimpleNote.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ContextConnection") ?? throw new InvalidOperationException("Connection string 'ContextConnection' not found.");
-builder.Services.AddDbContext<Context>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<Context>(options => options.UseInMemoryDatabase("SimpleNote"));
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
